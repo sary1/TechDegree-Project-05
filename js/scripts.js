@@ -35,10 +35,8 @@ $(document).ready(function(){
         $('#gallery').append(card);
       }) // end each
 
-      console.log(usersInfos);
 
-
-      
+      // Modal window creation
       $('#gallery').on('click', e => {
 
         // Extracting the name from the clicked card
@@ -74,16 +72,25 @@ $(document).ready(function(){
                     <p class="modal-text cap">${reqInfo.city}</p>
                     <hr>
                     <p class="modal-text">${reqInfo.cell}</p>
-                    <p class="modal-text">${reqInfo.street}, ${reqInfo.state}, OR ${reqInfo.postcode}</p>
+                    <p class="modal-text">${reqInfo.street}, ${reqInfo.state} ${reqInfo.postcode}</p>
                     <p class="modal-text">Birthday: ${reqInfo.birthday}</p>
                 </div>
+            </div>
+            <div class="modal-btn-container">
+                <button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
+                <button type="button" id="modal-next" class="modal-next btn">Next</button>
             </div>
         </div>
         `;
 
         $('body').append(modal);
+
+        $('#modal-close-btn').on('click', e => {
+          $('.modal-container').remove();
+        })
       })
 
+      
     } // end success
   }); // end ajax
 }) // end ready
